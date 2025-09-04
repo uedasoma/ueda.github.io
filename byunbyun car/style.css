@@ -1,0 +1,23 @@
+@charset "utf-8";
+
+html, body { height: 100%; margin: 0; }
+.stage {
+  /* position: fixed;      画面全体に固定 */
+  /* inset: 0; */
+  display: grid;        /* 同じグリッドセルに重ねる */
+  place-items: center;
+  overflow: hidden;
+}
+
+/* 2枚とも“画面に収まる最大サイズ”で中央に表示（トリミングなし） */
+.stage img {
+  grid-area: 1 / 1;     /* 同じセル＝重なる */
+  width: 100vw;
+  height: 95vh;
+  object-fit: contain;  /* 画像を切らずに全体表示 */
+  display: block;
+}
+
+.base    { z-index: 1; }
+.overlay { z-index: 2; pointer-events: none; opacity: 1; /* 透過はお好みで */ }
+

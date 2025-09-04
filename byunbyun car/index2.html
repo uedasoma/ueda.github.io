@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Before/After Slider</title>
+  <style>
+  .before_after_slider {
+    position: relative;
+    overflow: hidden;
+    width: min(800px, 100%);
+    aspect-ratio: 16 / 9; 
+    margin: 0 auto;
+  }
+ 
+  .box_before {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    height: 100%;
+    border-right: 5px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 10px 0 15px -13px #000;
+  }
+ 
+  .box_before img {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: left center;
+  }
+ 
+  .box_before::before {
+    content: '';
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    right: -30px;
+    bottom: 0;
+    width: 45px;
+    height: 45px;
+    margin: auto;
+    border: 5px solid rgba(255, 255, 255, 0.7);
+    border-radius: 50%;
+    box-shadow: 10px 0 15px -13px #000;
+  }
+
+  .box_after {
+    width: 100%;
+    height: 100%;
+  }
+  .box_after img {
+    width: 100%;
+    height: 100%;
+  }
+ 
+  .slider_range {
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    opacity: 0;
+    cursor: col-resize;
+  }
+</style>
+</head>
+<body>
+
+  <div class="before_after_slider">
+  <div class="box_before" id="js-boxBefore">
+    <img src="ビュンビュンカー_01.jpg" alt="ビフォー画像">
+  </div>
+  <div class="box_after">
+    <img src="ビュンビュンカー_02.jpg" alt="アフター画像">
+  </div>
+  <input type="range" min="0" max="100" value="50" oninput="beforeAfterSlider()" onchange="beforeAfterSlider()" class="slider_range" id="js-sliderRange">
+</div>
+
+  <script>
+  function beforeAfterSlider() {
+    document.getElementById("js-boxBefore").style.width = document.getElementById("js-sliderRange").value + "%";
+  }
+</script>
+</body>
+</html>

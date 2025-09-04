@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>ビュンビュンカー</title>
+</head>
+<body>
+  <div class="stage">
+    <img class="base"    src="ビュンビュンカー_01.jpg" alt="">
+    <img class="overlay" src="ビュンビュンカー_02.jpg" alt="">
+  </div>
+<input type="range" min="0" max="100" step="1" value="100" id="opacity">
+<output for="opacity" id="opacityOut"></output>%
+<script>
+  const r = document.getElementById('opacity');
+  const out = document.getElementById('opacityOut');
+  const el = document.querySelector('.overlay');
+  console.log(r.value)  ;
+  r.addEventListener('input', function () {
+    out.value = r.value;
+    el.style.opacity = r.value / 100;
+  });
+
+</script>
+
+</body>
+
+</html>
